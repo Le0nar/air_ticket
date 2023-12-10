@@ -1,7 +1,6 @@
 package order
 
 import (
-	domain "github.com/Le0nar/orders/internal/domain"
 	"github.com/Le0nar/orders/internal/repository/order"
 )
 
@@ -13,6 +12,6 @@ func NewOrderSerivce(or order.OrderRepository) *OrderService {
 	return &OrderService{orderRepository: or}
 }
 
-func (os *OrderService) GetOrderById (id string) (domain.Order, error) {
+func (os *OrderService) GetOrderById (id string) (string, error) {
 	return os.orderRepository.GetOrderById(id)
 }

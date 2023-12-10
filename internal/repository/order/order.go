@@ -1,7 +1,6 @@
 package order
 
 import (
-	"encoding/json"
 	"fmt"
 
 	domain "github.com/Le0nar/orders/internal/domain"
@@ -18,14 +17,12 @@ func NewOrderRepository(db *sqlx.DB) *OrderRepository {
 
 const ordersTable = "orders"
 
-func (or *OrderRepository) GetOrderById (id string) (domain.Order, error) {
-	var orderDTO domain.OrderDTO
+func (or *OrderRepository) GetOrderById (id string) (string, error) {
+	var order domain.Order
+
 	query := fmt.Sprintf("SELECT * FROM %s where id = '%s';", ordersTable, id)
 	fmt.Printf("query: %v\n", query)
-	err := or.db.Get(&orderDTO, query)
+	err := or.db.Get(&order, query)
 
-	var order domain.Order
-	json.Unmarshal([]byte(orderDTO.Content), &order)
-
-	return order, err
+	return order.Content, err
 }
