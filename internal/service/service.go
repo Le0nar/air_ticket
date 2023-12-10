@@ -5,10 +5,6 @@ import (
 	"github.com/Le0nar/orders/internal/service/order"
 )
 
-// type Repository interface {
-// 	order.OrderRepository
-// }
-
 type Service struct {
 	OrderService *order.OrderService
 }

@@ -10,12 +10,9 @@ type Handler struct {
 	OrderHandler *order.OrderHandler
 }
 
-// type Service interface {
-// 	order.OrderSerivce
-// } 
-
 func NewHandler(service *service.Service) *Handler {
 	return &Handler{
+		OrderHandler: order.NewOrderHandler(*service.OrderService),
 	}
 }
 

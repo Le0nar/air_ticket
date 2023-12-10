@@ -1,6 +1,8 @@
 package domain
 
-import "time"
+import (
+	"time"
+)
 
 type Order struct {
 	OrderUID    string `json:"order_uid"`
@@ -49,3 +51,9 @@ type Order struct {
 	DateCreated       time.Time `json:"date_created"`
 	OofShard          string    `json:"oof_shard"`
 }
+
+type OrderDTO struct {
+	Id string `db:"id"`
+	Content string `db:"content"`
+}
+

@@ -7,10 +7,6 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-// type orderRepository interface {
-// 	GetOrderById (id uuid.UUID) (domain.Order, error)
-// }
-
 type Repository struct {
 	OrderRepository *order.OrderRepository
 }
