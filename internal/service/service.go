@@ -11,6 +11,6 @@ type Service struct {
 
 func NewService(repo *repository.Repository) *Service {
 	return &Service{
-		OrderService: order.NewOrderSerivce(*repo.OrderRepository),
+		OrderService: order.NewOrderSerivce(*repo.OrderPsqlRepository),
 	}
 }

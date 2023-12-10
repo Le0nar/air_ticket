@@ -3,17 +3,17 @@ package repository
 import (
 	"fmt"
 
-	"github.com/Le0nar/orders/internal/repository/order"
+	"github.com/Le0nar/orders/internal/repository/postgresql/order"
 	"github.com/jmoiron/sqlx"
 )
 
 type Repository struct {
-	OrderRepository *order.OrderRepository
+	OrderPsqlRepository *order.OrderPsqlRepository
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
-		OrderRepository: order.NewOrderRepository(db),
+		OrderPsqlRepository: order.NewOrderPsqlRepository(db),
 	}
 }
 

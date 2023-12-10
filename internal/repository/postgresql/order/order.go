@@ -7,22 +7,22 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-type OrderRepository struct {
+type OrderPsqlRepository struct {
 	db *sqlx.DB
 }
 
-func NewOrderRepository(db *sqlx.DB) *OrderRepository {
-	return &OrderRepository{db: db}
+func NewOrderPsqlRepository(db *sqlx.DB) *OrderPsqlRepository {
+	return &OrderPsqlRepository{db: db}
 }
 
 const ordersTable = "orders"
 
-func (or *OrderRepository) GetOrderById (id string) (string, error) {
+func (opr *OrderPsqlRepository) GetOrderById (id string) (string, error) {
 	var order domain.Order
 
 	query := fmt.Sprintf("SELECT * FROM %s where id = '%s';", ordersTable, id)
 	fmt.Printf("query: %v\n", query)
-	err := or.db.Get(&order, query)
+	err := opr.db.Get(&order, query)
 
 	return order.Content, err
 }
