@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/Le0nar/orders/internal/handler"
+	"github.com/Le0nar/orders/internal/api/handler"
 	"github.com/Le0nar/orders/internal/repository"
 	"github.com/Le0nar/orders/internal/service"
 

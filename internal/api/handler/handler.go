@@ -18,7 +18,14 @@ func NewHandler(service Service) *Handler {
 func (h *Handler)  InitRouter() *gin.Engine {
 	router := gin.Default()
 
-	// TODO: add routes here
+	api := router.Group("/api")
+	{
+		order := api.Group("/order")
+		{
+			// TODO: add handle function
+			order.GET("/:id")
+		}
+	}
 
 	return router
 }
