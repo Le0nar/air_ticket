@@ -3,14 +3,21 @@ package repository
 import (
 	"fmt"
 
+	"github.com/Le0nar/orders/internal/repository/order"
 	"github.com/jmoiron/sqlx"
 )
 
+// type orderRepository interface {
+// 	GetOrderById (id uuid.UUID) (domain.Order, error)
+// }
+
 type Repository struct {
+	OrderRepository *order.OrderRepository
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
+		OrderRepository: order.NewOrderRepository(db),
 	}
 }
 

@@ -1,11 +1,20 @@
 package service
 
+import (
+	"github.com/Le0nar/orders/internal/repository"
+	"github.com/Le0nar/orders/internal/service/order"
+)
+
+// type Repository interface {
+// 	order.OrderRepository
+// }
+
 type Service struct {
+	OrderService *order.OrderService
 }
 
-type Repository interface{}
-
-func NewService(repository Repository) *Service {
+func NewService(repo *repository.Repository) *Service {
 	return &Service{
+		OrderService: order.NewOrderSerivce(*repo.OrderRepository),
 	}
 }

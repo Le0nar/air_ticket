@@ -1,16 +1,20 @@
 package handler
 
 import (
+	"github.com/Le0nar/orders/internal/api/handler/order"
+	"github.com/Le0nar/orders/internal/service"
 	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {
-
+	OrderHandler *order.OrderHandler
 }
 
-type Service interface {} 
+// type Service interface {
+// 	order.OrderSerivce
+// } 
 
-func NewHandler(service Service) *Handler {
+func NewHandler(service *service.Service) *Handler {
 	return &Handler{
 	}
 }
@@ -22,8 +26,7 @@ func (h *Handler)  InitRouter() *gin.Engine {
 	{
 		order := api.Group("/order")
 		{
-			// TODO: add handle function
-			order.GET("/:id")
+			order.GET("/:id", h.OrderHandler.GetOrderById)
 		}
 	}
 
