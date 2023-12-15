@@ -48,6 +48,8 @@ func main() {
 
 	port := viper.GetString("port")
 	srv :=  initServer(router, port)
+
+	// TODO: add data from bd to cache on start
 	
 	go func () {	
 		if err := srv.ListenAndServe(); err != nil {

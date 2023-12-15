@@ -26,3 +26,17 @@ func (opr *OrderPsqlRepository) GetOrderById (id string) (string, error) {
 
 	return order.Content, err
 }
+
+func (opr *OrderPsqlRepository) CreateOrder(order domain.Order)  error {
+	var id string
+
+	query := fmt.Sprintf("INSERT INTO %s (id, content) values ($1, $2) RETURNING id", ordersTable)
+
+	row := opr.db.QueryRow(query, order.Id, order.Content)
+	if err := row.Scan(&id); err != nil {
+		return  err
+	}
+
+	return  nil
+}
+

@@ -24,6 +24,7 @@ func (h *Handler)  InitRouter() *gin.Engine {
 		order := api.Group("/order")
 		{
 			order.GET("/:id", h.OrderHandler.GetOrderById)
+			order.POST("/", h.OrderHandler.CreateOrder)
 		}
 	}
 
