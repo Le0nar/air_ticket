@@ -3,20 +3,17 @@ package repository
 import (
 	"fmt"
 
-	orderCache "github.com/Le0nar/orders/internal/repository/cache/order"
 	"github.com/Le0nar/orders/internal/repository/postgresql/order"
 	"github.com/jmoiron/sqlx"
 )
 
 type Repository struct {
 	OrderPsqlRepository *order.OrderPsqlRepository
-	OrderCacheRepository *orderCache.OrderCacheRepository
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		OrderPsqlRepository: order.NewOrderPsqlRepository(db),
-		OrderCacheRepository: orderCache.NewOrderCacheRepository(),
 	}
 }
 
